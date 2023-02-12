@@ -1,0 +1,36 @@
+<div class="account section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="login-form border p-5">
+          <div class="text-center heading">
+            <h2 class="mb-2">Login</h2>
+            <p class="lead">Don’t have an account? <a routerLink="/signup" routerLinkActive="router-link-active" >Create a free account</a></p>
+          </div>
+
+          <form action="#" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+
+            <app-input [label]="'Email'"
+            formControlName="email"
+            [type]="'email'"
+            [errors]="loginForm.controls['email'].errors"></app-input>
+
+            <app-input [label]="'Password'"
+            formControlName="password"
+            [minlength]="8"
+            [type]="'password'"
+            [errors]="loginForm.controls['password'].errors"></app-input>
+
+            <label class="switch mt-3 me-2">
+              <input type="checkbox" (change)="onCheckedBoxChange($event)">
+              <span class="slider round"></span>
+            </label>
+            <a class="float-right" style="color: black">Show password</a>
+
+            <button type="submit" class="btn btn-main mt-3 btn-block d-block w-25" >Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<p class="text-danger" *ngIf="errors?.['required']">{{label}} is Required</p>
+<p class="text-danger" *ngIf="errors?.['email']">{{label}} is Not Format</p>
+<p class="text-danger" *ngIf="errors?.['minlength']">{{label}} Minimum {{minLength}} character are required.</p>
+<p class="text-danger" *ngIf="errors?.['pattern']">{{label}} is Not Format Pattern</p>

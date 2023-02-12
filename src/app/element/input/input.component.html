@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label for="#">Enter {{label}}</label>
+
+  <input type="{{type}}"
+    class="form-control"
+    placeholder="Enter {{label}}"
+    [(ngModel)]="value"
+    (keyup)="onChange($event)"
+    (blur)="onTouched($event)"
+    >
+  <div *ngIf="isDirty || isTouck">
+    <app-message-error [errors]="errors" [label]="label" [minLength]="minlength"></app-message-error>
+  </div>
+</div>

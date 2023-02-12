@@ -1,0 +1,159 @@
+<div class="container mb-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/ad_update">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">List User</li>
+    </ol>
+  </nav>
+  <h2 class="text-start" style="font-weight: bolder; font-size: 24px;">Danh sách khách hàng</h2>
+</div>
+
+<table class="container">
+  <thead>
+    <tr>
+      <th>
+        <h1>Avatar</h1>
+      </th>
+      <th>
+        <h1>Name</h1>
+      </th>
+      <th>
+        <h1>Email</h1>
+      </th>
+      <th>
+        <h1>Sdt</h1>
+      </th>
+      <th>
+        <h1>Action</h1>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listUser | paginate: {itemsPerPage: 5, currentPage: p} ">
+      <td><img src="{{item.avt}}" width="100" height="100"
+          style="border-radius: 100%; border: 2px solid black; padding: 5px;"></td>
+      <td>{{item.name}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.sdt}}</td>
+      <td>
+        <!--  -->
+        <Button Class="Edit-Button mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="Handler(item)">
+          <Div Class="Trash">
+            <Div Class="Top">
+              <Div Class="Paper"></Div>
+            </Div>
+            <Div Class="Box"></Div>
+            <Div Class="Check">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </Div>
+          </Div>
+          <Span>Edit User</Span>
+        </Button>
+
+        <Button Class="Button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="Handler(item)">
+          <Div Class="Trash">
+            <Div Class="Top">
+              <Div Class="Paper"></Div>
+            </Div>
+            <Div Class="Box"></Div>
+            <Div Class="Check">
+              <i class="fa-solid fa-trash"></i>
+            </Div>
+          </Div>
+          <Span>Delete User</Span>
+        </Button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="col-12">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </ul>
+  </nav>
+</div>
+
+
+<!-- Modal Edit-->
+<div class="modal fade" *ngIf="User" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">View {{User.name}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editUser">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="{{User.name}}"
+              formControlName="name">
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="recipient-name" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="{{User.email}}"
+                formControlName="email">
+            </div>
+            <div class="col-6">
+              <label for="recipient-name" class="col-form-label">Password:</label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="{{User.password}}"
+                formControlName="password" readonly>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Address:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="{{User.address}}"
+              formControlName="address">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Avatar:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="{{User.avt}}"
+              formControlName="avt">
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label for="recipient-name" class="col-form-label">Role:</label>
+              <select name="demo" id="#" class="form-control" formControlName="role">
+                <option selected="selected" value="User">User</option>
+                <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="col-6">
+              <label for="recipient-name" class="col-form-label">Phone Number:</label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="{{User.sdt}}"
+                formControlName="sdt">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="Close-Button" data-bs-dismiss="modal" (click)="HandlerClose()">Close</button>
+        <button type="button" class="Edit-Button" data-bs-dismiss="modal" (click)="Edit(editUser.value)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Del-->
+<div class="modal fade" *ngIf="User" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Do you want Delete User {{User.name}}</h5>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="Button" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="Edit-Button" data-bs-dismiss="modal" (click)="Delete(User.id!)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

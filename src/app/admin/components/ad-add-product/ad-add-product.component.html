@@ -1,0 +1,115 @@
+<div class="container mb-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/ad_update">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+    </ol>
+  </nav>
+  <h2 class="text-start" style="font-weight: bolder; font-size: 24px;">Thêm sản phẩm</h2>
+  <div class="container me-5 ms-5">
+    <form  [formGroup]="addProduct" (ngSubmit)="handlerAdd(addProduct.value)">
+      <div class="row">
+        <div class="form-group mb-4 col-6">
+          <label for="#" >Name Product</label>
+          <input type="text" class="form-control"  formControlName="name" >
+          <div *ngIf="add['name'].invalid && (add['name'].dirty || add['name'].touched)" class="text-danger">
+            <div *ngIf="add['name'].errors?.['required']">Name Product is required..</div>
+          </div>
+        </div>
+
+        <div class="col-6 d-flex gap-2">
+          <div class="form-group">
+            <label for="#">Sale</label>
+            <input type="checkbox" class="customcheckbox" (click)="CheckChange($event)" >
+          </div>
+          <div class="form-group w-100" *ngIf="isCheck == 1">
+            <label for="#">Price Sale</label>
+            <input type="text" class="form-control" formControlName="price_sale">
+            <div *ngIf="add['price_sale'].invalid && (add['price_sale'].dirty || add['price_sale'].touched)" class="text-danger">
+              <div *ngIf="add['price_sale'].errors?.['pattern']">Price Sale is number..</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="#">Image</label>
+          <input type="text" class="form-control" formControlName="image">
+          <div *ngIf="add['image'].invalid && (add['image'].dirty || add['image'].touched)" class="text-danger">
+            <div *ngIf="add['image'].errors?.['required']">Image is required..</div>
+          </div>
+        </div>
+        <div class="form-group mb-4 col-6">
+          <label for="#" >Image1</label>
+          <input type="text" class="form-control"  formControlName="image1" >
+          <div *ngIf="add['image1'].invalid && (add['image1'].dirty || add['image1'].touched)" class="text-danger">
+            <div *ngIf="add['image1'].errors?.['required']">Image 1 is required..</div>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+         <div class="form-group col-6">
+          <label for="#">Image2</label>
+          <input type="text" class="form-control"  formControlName="image2">
+          <div *ngIf="add['image2'].invalid && (add['image2'].dirty || add['image2'].touched)" class="text-danger">
+            <div *ngIf="add['image2'].errors?.['required']">Image 2 is required..</div>
+          </div>
+        </div>
+        <div class="form-group mb-4 col-2">
+          <label for="#" >Category</label>
+          <input type="text" class="form-control"  formControlName="category">
+          <div *ngIf="add['category'].invalid && (add['category'].dirty || add['category'].touched)" class="text-danger">
+            <div *ngIf="add['category'].errors?.['required']">Category is required..</div>
+          </div>
+        </div>
+        <div class="form-group col-1">
+          <label for="#">Size</label>
+          <!-- <input type="text" class="form-control"  formControlName="size"> -->
+          <select name="demo" id="#" class="form-control" formControlName="size">
+            <option selected="selected" value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            </select>
+        </div>
+        <div class="form-group col-1">
+          <label for="#">Color</label>
+          <input type="text" class="form-control"  formControlName="color">
+          <div *ngIf="add['color'].invalid && (add['color'].dirty || add['color'].touched)" class="text-danger">
+            <div *ngIf="add['color'].errors?.['required']">Color is required..</div>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <label for="#">Price</label>
+          <input type="text" class="form-control"   formControlName="price">
+          <div *ngIf="add['price'].invalid && (add['price'].dirty || add['price'].touched)" class="text-danger">
+            <div *ngIf="add['price'].errors?.['required']">Price is required..</div>
+            <div *ngIf="add['price'].errors?.['pattern']">Price is number..</div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="#">Description</label>
+            <textarea style="height: 200px;" type="text" class="form-control" formControlName="description"></textarea>
+            <div *ngIf="add['description'].invalid && (add['description'].dirty || add['description'].touched)" class="text-danger">
+              <div *ngIf="add['description'].errors?.['required']">Description is required..</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box d-flex gap-3 align-items-center" >
+        <Button Class="Edit-Button d-flex align-items-center" >
+          <i class="fa-solid fa-plus"></i>
+          <Span>Add Item</Span>
+        </Button>
+
+        <Button Class="Button d-flex align-items-center" >
+          <i class="fa-solid fa-chevron-left"></i>
+          <Span>Cancel and Back</Span>
+        </Button>
+      </div>
+    </form>
+  </div>
+</div>

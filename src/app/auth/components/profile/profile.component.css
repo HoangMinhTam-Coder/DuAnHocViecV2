@@ -1,0 +1,7 @@
+.avt:hover {
+  transform: scale(1.3);
+}
+
+.avt {
+  transition: transform .2s;
+}

@@ -1,0 +1,142 @@
+<section class="page-header">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Profile</h1>
+          <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day
+            multiply you’ll which</p>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link active" routerLink="/profile-details">Account</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" (click)="userLogout()">Log Out</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+
+
+
+
+        <div [ngSwitch]="menuType">
+          <div class="tab-pane fade show active" id="settings" role="tabpanel" *ngSwitchCase="'seller'">
+            <div class="acccount-settings">
+              <h4 class="mb-4">Account information</h4>
+              <form action="#">
+                <div class="form-row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>First Name</label>
+                      <input type="text" class="form-control" value="sellerName">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Last Name</label>
+                      <input type="text" class="form-control" placeholder="Jas">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-4">
+                  <label>Display name </label>
+                  <input type="text" class="form-control" placeholder="Jassa">
+                  <p class="mt-2"> This will be how your name will be displayed in the account section and in reviews
+                  </p>
+                </div>
+                <div class="form-group mb-4">
+                  <label>Email address </label>
+                  <input type="text" class="form-control" placeholder="therichposts@gmail.com">
+                </div>
+                <a href="#" class="btn btn-dark">Edit Address</a>
+              </form>
+            </div>
+          </div>
+
+          <div class="tab-pane fade show active" id="settings" role="tabpanel" *ngSwitchCase="'user'">
+            <div class="acccount-settings">
+              <h4 class="mb-4">Account information</h4>
+              <form action="#">
+                <div class="form-group d-flex justify-content-center">
+                  <img class="avt" src="{{user.avt}}" alt="{{user.name}}" width="150" height="150" style="border: 2px solid black; border-radius: 50%; padding: 10px;">
+                </div>
+                <div class="form-row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label>Full Name</label>
+                      <input type="text" class="form-control" value={{user.name}} disabled>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Email address </label>
+                  <input type="text" class="form-control" value={{user.email}} disabled>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" class="form-control" value={{user.sdt}} disabled>
+                </div>
+                <div class="form-group mb-4">
+                  <label>Address</label>
+                  <input type="text" class="form-control" value={{user.address}} disabled>
+                </div>
+                <a routerLink="/edit-adrress" class="btn btn-dark mt-2">Edit Address</a>
+              </form>
+
+              <form class="mt-5" [formGroup]="changePasswordForm" (ngSubmit)="resetPassword(changePasswordForm.value)">
+                <h4>Password changed</h4>
+
+                <div class="form-group">
+                  <label>Enter Current password </label>
+                  <input type="text" class="form-control" formControlName="currentpassword">
+                  <div *ngIf="l['currentpassword'].invalid && (l['currentpassword'].dirty || l['currentpassword'].touched)" class="text-danger">
+                    <div *ngIf="l['currentpassword'].errors?.['required']">Current Password is required.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>New password</label>
+                  <input type="text" class="form-control" formControlName="newpassword">
+                  <div *ngIf="l['newpassword'].invalid && (l['newpassword'].dirty || l['newpassword'].touched)" class="text-danger">
+                    <div *ngIf="l['newpassword'].errors?.['required']">New Password is required.</div>
+                  </div>
+                </div>
+                <div class="form-group mb-2">
+                  <label>Confirm password</label>
+                  <input type="password" class="form-control" formControlName="repassword" (input)="sendTheNewValue($event)">
+                  <div *ngIf="l['repassword'].invalid && (l['repassword'].dirty || l['repassword'].touched)" class="text-danger">
+                    <div *ngIf="l['repassword'].errors?.['required']">New Password is required.</div>
+                  </div>
+                  <div class="text-danger" *ngIf=!isCheckPass>Repeat Password not Match New Password.</div>
+                </div>
+
+                <button type="submit" class="btn btn-dark">Save Changes</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
