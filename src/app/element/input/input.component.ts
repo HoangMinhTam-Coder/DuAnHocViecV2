@@ -1,10 +1,11 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,6 +20,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() minlength!:number;
   @Input() errors!: ValidationErrors | null
   @Input() type!:string;
+  @Input() classinput!:string;
   value!:string;
   isDirty:boolean = false;
   isTouck:boolean = false;

@@ -9,15 +9,11 @@
           </div>
 
           <form [formGroup]="signupForm" (ngSubmit)="signUp(signupForm.value)">
-            <div class="form-group mb-4">
-              <label for="#">Enter Email Address</label>
-              <input type="text" class="form-control" ngModel placeholder="Email Address" name="Email"
-                formControlName="Email">
-              <div *ngIf="l['Email'].invalid && (l['Email'].dirty || l['Email'].touched)" class="text-danger">
-                <div *ngIf="l['Email'].errors?.['email']">Email is Not Format.</div>
-                <div *ngIf="l['Email'].errors?.['required']">Email is required..</div>
-              </div>
-            </div>
+
+            <app-input [classinput]="'mb-4'" [label]="'Email'" formControlName="Email" [type]="'email'"
+              [errors]="signupForm.controls['Email'].errors">
+            </app-input>
+
             <div class="row">
               <div class="form-group mb-4 col-6">
                 <label for="#">Enter Username</label>
@@ -28,6 +24,7 @@
                   <div *ngIf="l['Name'].errors?.['required']">Name is required..</div>
                 </div>
               </div>
+
               <div class="form-group mb-4 col-6">
                 <label for="#">Enter Password</label>
                 <input type="text" class="form-control" ngModel placeholder="Password" name="Password"
@@ -39,14 +36,10 @@
                 </div>
               </div>
             </div>
-            <div class="form-group mb-4">
-              <label for="#">Enter Address</label>
-              <input type="text" class="form-control" ngModel placeholder="Enter Address" name="Address"
-                formControlName="Address">
-              <div *ngIf="l['Address'].invalid && (l['Address'].dirty || l['Address'].touched)" class="text-danger">
-                <div *ngIf="l['Address'].errors?.['required']">Address is required..</div>
-              </div>
-            </div>
+
+            <app-input [classinput]="'mb-4'" [label]="'Address'" formControlName="Address" [type]="'text'"
+              [errors]="signupForm.controls['Address'].errors">
+            </app-input>
 
             <div class="row">
               <div class="form-group mb-4 col-12 col-md-6">
@@ -56,6 +49,7 @@
                   <div *ngIf="l['Avt'].errors?.['required']">Avatar is required..</div>
                 </div>
               </div>
+
               <div class="form-group mb-4 col-12 col-md-6">
                 <label for="#">Enter Phone</label>
                 <input type="text" class="form-control" ngModel placeholder="Phone Number" name="SDT"

@@ -1,5 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ShopComponent } from './shop/shop.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer, metaReducerLocalStorage } from './state/cart.reducer';
 import { ProductsModule } from './products/products.module';
@@ -18,11 +19,14 @@ import { CartEffect } from './state/cart.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { Interceptor } from './Interceptor/Interceptor';
 @NgModule({
   declarations: [AppComponent, ShopComponent],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [
+    [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}]],
   bootstrap: [AppComponent],
   imports: [
+    CommonModule,
     MatDialogModule,
     BrowserAnimationsModule,
     BrowserModule,

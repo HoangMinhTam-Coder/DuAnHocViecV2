@@ -54,6 +54,10 @@
       <i class="fa-solid fa-chevron-left"></i>
       <Span>Cancel and Back</Span>
     </a>
+    <button (click)="exportPdf()" Class="Button--Export d-flex align-items-center gap-3">
+      <i class="fa-sharp fa-solid fa-download"></i>
+      <Span>Export Pdf</Span>
+    </button>
     <h4 class="text-end">Total: {{total | currency:'VND':'VND': '':'vi' }}</h4>
   </div>
 </div>

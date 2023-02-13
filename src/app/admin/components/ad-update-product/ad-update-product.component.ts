@@ -7,6 +7,7 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 import Swal from 'sweetalert2';
 import { ModalComponent } from '../uilt/modal/modal.component';
 
+
 @Component({
   selector: 'app-ad-update-product',
   templateUrl: './ad-update-product.component.html',

@@ -1,0 +1,96 @@
+<section class="page-header">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Thống Kê</h1>
+          <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day multiply you’ll which</p>
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-center">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Thống Kê Admin</li>
+          </ol>
+        </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container mt-5 mb-5">
+  <h2 class="text-start mb-4" style="font-weight: bolder; font-size: 24px;">Sumary</h2>
+  <div class="row d-flex justify-content-md-between justify-content-center gap-4">
+    <div class="card col-12 col-md-3">
+      <div class="box p-3">
+        <div class="text-white box__title d-flex justify-content-between ">
+          <h4 class="text-white">Total User</h4>
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="box__body">
+          <div class="text-white text-center" style="font-size: 37px;font-weight: bolder; text-decoration: underline;">{{totalUser}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card--liner2 col-3 col-md-12">
+      <div class="box p-3">
+        <div class="text-white box__title d-flex justify-content-between ">
+          <h4 class="text-white">Total Product</h4>
+          <i class="fa-solid fa-window-restore"></i>
+        </div>
+        <div class="box__body">
+          <div class="text-white text-center" style="font-size: 37px;font-weight: bolder; text-decoration: underline;">{{totalProduct}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card--liner3 col-12 col-md-3">
+      <div class="box p-3">
+        <div class="text-dark box__title d-flex justify-content-between ">
+          <h4 class="text-dark">Total Order</h4>
+          <i class="fa-solid fa-window-restore"></i>
+        </div>
+        <div class="box__body">
+          <div class="text-dark text-center" style="font-size: 37px;font-weight: bolder; text-decoration: underline;">{{totalOrder}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="card--liner4 col-12 col-md-3">
+      <div class="box p-3">
+        <div class="text-dark box__title d-flex justify-content-between ">
+          <h4 class="text-dark">Total Price</h4>
+          <i class="fa-solid fa-window-restore"></i>
+        </div>
+        <div class="box__body">
+          <div class="text-dark text-center" style="font-size: 37px;font-weight: bolder; text-decoration: underline;">{{totalPrice | currency:'VND':'VND': '':'vi'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-start mb-4 mt-5" style="font-weight: bolder; font-size: 24px;">All Order</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Time</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listOrder | paginate: {itemsPerPage: 10, currentPage: p}">
+        <td>{{item.id}}</td>
+        <td>{{item.time}}</td>
+        <td>{{item.diaChi}}</td>
+        <td>{{item.sdt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-12">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </ul>
+    </nav>
+  </div>
+</section>

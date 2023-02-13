@@ -10,4 +10,5 @@ export class MessageErrorComponent {
   @Input() errors!: ValidationErrors | null
   @Input() label!:string;
   @Input() minLength!:number;
+  @Input() maxLength!:number;
 }

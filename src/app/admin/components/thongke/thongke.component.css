@@ -1,0 +1,56 @@
+.box__admin {
+  background-color: aqua;
+  height: 400px;
+  border: 1px solid black !important;
+}
+
+.card {
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(135deg, #ef88bb 0%, #291850 100%);
+  border-radius: 7px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.card--liner2 {
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(135deg, #abf8e7 0%, #8778c7 100%);
+  border-radius: 7px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.card--liner3 {
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(135deg, #ccfbff 0%, #ef96c5 100%);
+  border-radius: 7px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.card--liner4 {
+  width: 300px;
+  height: 150px;
+  background: linear-gradient(135deg, #ff0078 0%, #f6efa7 100%);
+  border-radius: 7px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 2px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(185, 173, 173);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8d6e6e;
+}

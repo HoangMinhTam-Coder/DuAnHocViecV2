@@ -10,7 +10,9 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { ModalComponent } from './components/uilt/modal/modal.component';
 import { AdEditComponent } from './components/ad-edit/ad-edit.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserModule } from '@angular/platform-browser';
 import { AdManagerUserComponent } from './components/ad-manager-user/ad-manager-user.component';
+import { ThongkeComponent } from './components/thongke/thongke.component';
 
 export const route:Routes = [
   {
@@ -31,17 +33,20 @@ export const route:Routes = [
     AdUpdateProductComponent,
     ModalComponent,
     AdEditComponent,
-    AdManagerUserComponent
+    AdManagerUserComponent,
+    ThongkeComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(route),
     FormsModule,
+    BrowserModule,
     ReactiveFormsModule,
     NgxPaginationModule
   ],
   exports: [
-    ModalComponent
+    ModalComponent,
+    ThongkeComponent
   ]
 })
 export class AdminModule { }

@@ -1,5 +1,5 @@
 
-.Button {
+.Button , .Button--Export{
   --Background: #2b3044;
   --Background-Hover: #1e2235;
   --Text: #fff;
@@ -30,12 +30,15 @@
   gap: 4px;
 }
 
+.Button--Export {
+  background-color: deepskyblue;
+}
 
 .Button {
   background-color: #717576;
 }
 
-.Button:hover {
+.Button:hover, .Button--Export:hover {
   scale: 0.95 ;
   transition: ease-in 0.2s;
 }

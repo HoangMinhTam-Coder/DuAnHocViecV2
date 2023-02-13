@@ -4,6 +4,7 @@ import { AdAddProductComponent } from './admin/components/ad-add-product/ad-add-
 import { AdEditComponent } from './admin/components/ad-edit/ad-edit.component';
 import { AdManagerUserComponent } from './admin/components/ad-manager-user/ad-manager-user.component';
 import { AdUpdateProductComponent } from './admin/components/ad-update-product/ad-update-product.component';
+import { ThongkeComponent } from './admin/components/thongke/thongke.component';
 import { EditAddressComponent } from './auth/components/edit-address/edit-address.component';
 import { HistoryDetailComponent } from './auth/components/history-detail/history-detail.component';
 import { HistoryComponent } from './auth/components/history/history.component';
@@ -23,16 +24,16 @@ const routes: Routes = [
     loadChildren: () => import("./share/share.module").then(m => m.ShareModule)
   },
   {
-    path: 'search',
-    component: SearchComponent
-  },
-  {
     path: 'login',
     loadChildren: () => import("./auth/auth.module").then(m => m.AuthModule)
   },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     path: 'shop',
@@ -88,6 +89,12 @@ const routes: Routes = [
   {
     path: 'manager_user',
     component: AdManagerUserComponent,
+    canActivate: [AdminGuard]
+  }
+  ,
+  {
+    path: 'thongke',
+    component: ThongkeComponent,
     canActivate: [AdminGuard]
   }
 ];

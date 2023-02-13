@@ -30,4 +30,8 @@ export class OrderService {
   sendMail(ds:SendMail[], id: number) {
     return this.http.post(`https://localhost:7296/api/Email?idUsers=${id}`,ds)
   }
+
+  exportPdfOrder(id:number) {
+    return this.http.get(`https://localhost:7296/api/HoaDon/generatepdf?id=${id}`);
+  }
 }
